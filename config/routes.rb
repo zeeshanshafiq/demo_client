@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-
+  resources :posts
   namespace :api, defaults: { format: :json } do
     scope module: :v1 do
       devise_for :users
