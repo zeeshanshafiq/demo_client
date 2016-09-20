@@ -3,7 +3,7 @@ class ApiController < ApplicationController
   skip_before_action :verify_authenticity_token,
                      if: Proc.new { |c| c.request.format == 'application/json' }
 #  skip_before_action :verify_authenticity_token
-#   before_action :authenticate_resource_from_token!
+  before_action :authenticate_resource_from_token!
 
   def resource_name
     :api_user

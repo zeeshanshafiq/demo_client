@@ -1,4 +1,4 @@
-class Api::V1::ArticlesController < ApplicationController
+class Api::V1::ArticlesController < ApiController
 
   def index
     user = User.includes(:articles).find_by_name(params[:user_id])
