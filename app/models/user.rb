@@ -16,6 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  authentication_token   :string
+#  name                   :string
 #
 
 class User < ActiveRecord::Base
@@ -25,11 +26,16 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   # == Schema Information
   before_save :ensure_authentication_token
+  has_many :articles
 
   def ensure_authentication_token
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token
     end
+  end
+
+  def owner_name
+    name
   end
 
   private
